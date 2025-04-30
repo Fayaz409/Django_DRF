@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import mixins,generics
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from .serializers import EmployeeSerializer
 from rest_framework.pagination import PageNumberPagination
@@ -122,5 +123,6 @@ class EmployeeCustomPagination(PageNumberPagination):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+    filter_backends = [DjangoFilterBackend]
     # pagination_class = EmployeeCustomPagination
     filterset_fields = ['first_name','last_name','salary']
