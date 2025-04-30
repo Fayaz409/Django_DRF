@@ -129,4 +129,6 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     # pagination_class = EmployeeCustomPagination
     filterset_fields = ['first_name','last_name','salary']
     # filter_backends  = [filters.SearchFilter]
-    search_fields = ['first_name','last_name','salary']
+    search_fields = ['^first_name','^last_name']
+    # search_fields = ['first_name','last_name','salary']
+    # search_fields = ['=first_name','=last_name'],
