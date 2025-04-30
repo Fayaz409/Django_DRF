@@ -7,6 +7,7 @@ from rest_framework import status
 from rest_framework import mixins,generics
 from rest_framework import viewsets
 from .serializers import EmployeeSerializer
+from rest_framework.pagination import PageNumberPagination
 # Create your views here.
 
 @api_view(['GET','POST'])
@@ -115,8 +116,10 @@ class EmployeeDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
+class EmployeeCustomPagination(PageNumberPagination):
+    page_size = 3
 
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-    
+    pagination_class = EmployeeCustomPagination
