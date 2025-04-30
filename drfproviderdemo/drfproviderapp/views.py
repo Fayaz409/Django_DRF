@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from .models import Employee
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import filters
 from rest_framework import status
 from rest_framework import mixins,generics
 from django_filters.rest_framework import DjangoFilterBackend
@@ -123,6 +124,9 @@ class EmployeeCustomPagination(PageNumberPagination):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-    filter_backends = [DjangoFilterBackend]
+    # filter_backends = [DjangoFilterBackend]
+
     # pagination_class = EmployeeCustomPagination
-    filterset_fields = ['first_name','last_name','salary']
+    # filterset_fields = ['first_name','last_name','salary']
+    filter_backends  = [filters.SearchFilter]
+    search_fields = ['first_name','last_name','salary']
