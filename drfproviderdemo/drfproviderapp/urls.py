@@ -6,6 +6,8 @@ from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('api/viewset-employees',EmployeeViewSet)
+router.register('api/viewset-departments',DepartmentViewset)
+router.register('api/viewset-countries',CountryViewset)
 
 # urlpatterns = [
 # ]

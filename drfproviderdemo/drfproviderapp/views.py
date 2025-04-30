@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.decorators import api_view
-from .models import Employee
+from .models import Employee,Department,Country
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import filters
@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework import mixins,generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
-from .serializers import EmployeeSerializer
+from .serializers import EmployeeSerializer,DepartmentSerializer,CountrySerializer
 from rest_framework.pagination import PageNumberPagination
 # Create your views here.
 
@@ -124,11 +124,22 @@ class EmployeeCustomPagination(PageNumberPagination):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter,filters.OrderingFilter]
 
     # pagination_class = EmployeeCustomPagination
     filterset_fields = ['first_name','last_name','salary']
     # filter_backends  = [filters.SearchFilter]
     search_fields = ['^first_name','^last_name']
+    ordering_fields = ['first_name','last_name']
+    ordering = ['-id']
     # search_fields = ['first_name','last_name','salary']
     # search_fields = ['=first_name','=last_name'],
+
+class DepartmentViewset(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+class CountryViewset(viewsets.ModelViewSet):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
+    

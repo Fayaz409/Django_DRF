@@ -2,6 +2,23 @@ from django.db import models
 
 # Create your models here.
 
+class Department(models.Model):
+    dept_name  = models.CharField(max_length=50)
+    location_name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.dept_name
+
+class Country(models.Model):
+    country_name = models.CharField(max_length=40)
+    
+    def __str__(self):
+        return self.country_name
+
+
+
+
+
 class Employee(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
@@ -12,6 +29,9 @@ class Employee(models.Model):
     notes = models.CharField(max_length=200)
     email = models.EmailField(default='',max_length=50)
     phone_number = models.CharField(default='',max_length=20)
+    department = models.ForeignKey(Department,default=0,on_delete=models.CASCADE,related_name='Countries')
+    country = models.ForeignKey(Country,default=0,on_delete=models.CASCADE,related_name='Countries')
+
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
