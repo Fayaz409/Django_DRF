@@ -37,10 +37,10 @@ INSTALLED_APPS = [
 #     # 'DEFAULT_FILTER_BACKENDS':['django_filters.rest_framework.DjangoFilterBackend']
 # }
 
-REST_FRAMEWORK = {
-    'DEFAUL_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
-    'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated'],
-}
+# REST_FRAMEWORK = {
+#     'DEFAUL_AUTHENTICATION_CLASSES':['rest_framework.authentication.BasicAuthentication'],
+#     'DEFAULT_PERMISSION_CLASSES':['rest_framework.permissions.IsAuthenticated'],
+# }
 
 
 MIDDLEWARE = [
