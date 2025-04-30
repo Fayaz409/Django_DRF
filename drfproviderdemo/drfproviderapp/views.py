@@ -140,8 +140,8 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 class DepartmentViewset(viewsets.ModelViewSet):
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
+    # authentication_classes = [BasicAuthentication]
+    # permission_classes = [IsAuthenticated]
 
 class CountryViewset(viewsets.ModelViewSet):
     queryset = Country.objects.all()
