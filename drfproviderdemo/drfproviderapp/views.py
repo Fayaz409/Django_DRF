@@ -122,4 +122,5 @@ class EmployeeCustomPagination(PageNumberPagination):
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-    pagination_class = EmployeeCustomPagination
+    # pagination_class = EmployeeCustomPagination
+    filterset_fields = ['first_name','last_name','salary']
