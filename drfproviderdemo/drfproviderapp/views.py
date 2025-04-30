@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import mixins,generics
+from rest_framework import viewsets
 from .serializers import EmployeeSerializer
 # Create your views here.
 
@@ -113,3 +114,9 @@ class EmployeeLists(generics.ListCreateAPIView):
 class EmployeeDetails(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+    
