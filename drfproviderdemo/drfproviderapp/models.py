@@ -29,8 +29,8 @@ class Employee(models.Model):
     notes = models.CharField(max_length=200)
     email = models.EmailField(default='',max_length=50)
     phone_number = models.CharField(default='',max_length=20)
-    department = models.ForeignKey(Department,default=0,on_delete=models.CASCADE,related_name='Countries')
-    country = models.ForeignKey(Country,default=0,on_delete=models.CASCADE,related_name='Countries')
+    department = models.ForeignKey(Department,null=True,blank=True,on_delete=models.CASCADE,related_name='Departments')
+    country = models.ForeignKey(Country,null=True,blank=True,on_delete=models.CASCADE,related_name='Countries')
 
 
     def __str__(self):

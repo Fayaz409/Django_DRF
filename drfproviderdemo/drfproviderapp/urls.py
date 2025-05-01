@@ -14,6 +14,8 @@ router.register('api/viewset-countries',CountryViewset)
 
 urlpatterns = [
    path('',include(router.urls)),
+   path('api/departments-list/',departments_view,name='departments'),
+   path('api/countries-list/',country_view,name='countries'),
    path('get-api-auth-token/',obtain_auth_token,name='api-auth-token'),
    path('api/fbv-employees/',employee_list,name='employees-list'),
    path('api/fbv-employees/<int:pk>',employee_detail,name='employee-detail'),

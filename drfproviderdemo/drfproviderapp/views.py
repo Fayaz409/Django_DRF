@@ -146,3 +146,20 @@ class DepartmentViewset(viewsets.ModelViewSet):
 class CountryViewset(viewsets.ModelViewSet):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+
+
+@api_view(['GET'])
+def departments_view(request):
+    if request.method == 'GET':
+        departments = Department.objects.all().values_list('id','dept_name')
+        return Response(departments,status= status.HTTP_200_OK)
+
+@api_view(['Get'])
+def country_view(request):
+    if request.method == 'GET':
+        countries = Country.objects.all().values_list('id','country_name')
+        return Response(countries,status=status.HTTP_200_OK)
+
+
+
+
